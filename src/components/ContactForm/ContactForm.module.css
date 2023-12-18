@@ -1,0 +1,31 @@
+.formContainer {
+  max-width: 400px;
+  margin: 20px auto;
+}
+
+.lbl {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.inp {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.btn {
+  background-color: #4caf50;
+  color: #fff;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: rgb(71, 165, 81);
+  transform: scale(1.1);
+}
