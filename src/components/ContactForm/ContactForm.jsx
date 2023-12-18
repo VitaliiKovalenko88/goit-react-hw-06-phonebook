@@ -1,13 +1,23 @@
 import { useState } from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import css from './ContactForm.module.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { nanoid } from 'nanoid';
+import toast, { Toaster } from 'react-hot-toast';
+import { addContact } from '../../redux/conactsSlice';
 
-const Form = ({ onSubmit }) => {
+const Form = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
+  const dispatch = useDispatch();
+  const contacts = useSelector(({ contacts }) => contacts);
+
+  const generateId = () => nanoid();
+
   const handleChange = e => {
     const { value, name } = e.currentTarget;
+
     switch (name) {
       case 'name':
         setName(value);
@@ -23,7 +33,29 @@ const Form = ({ onSubmit }) => {
   const handleSubmit = e => {
     e.preventDefault();
 
-    onSubmit(name, number);
+    const data = {
+      id: generateId(),
+      name,
+      number,
+    };
+
+    const searchSameContact = contacts.find(contact => {
+      return contact.name.toLowerCase() === name.toLowerCase();
+    });
+
+    if (searchSameContact) {
+      const notify = () => toast.error(`${name} has been added already`);
+
+      notify();
+      return;
+    }
+
+    dispatch(addContact(data));
+
+    const notify = () =>
+      toast.success(`User, ${name},  has been added to your phone book`);
+
+    notify();
 
     reset();
   };
@@ -63,13 +95,10 @@ const Form = ({ onSubmit }) => {
         <button className={css.btn} type="submit">
           Add contact
         </button>
+        <Toaster />
       </form>
     </>
   );
-};
-
-Form.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
 };
 
 export default Form;
