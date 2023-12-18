@@ -1,11 +1,11 @@
 import PropTypes from 'prop-types';
 import css from './ContactItem.module.css';
 import { useDispatch } from 'react-redux';
-import { deleteContact } from '../../redux/conactsSlice';
+import { deleteContact } from '../../redux/contactsSlice';
 
 const ContactItem = ({ id, name, number }) => {
   const dispatch = useDispatch();
-
+  console.log(dispatch(deleteContact(id)));
   return (
     <>
       <p className={css.contactName}>

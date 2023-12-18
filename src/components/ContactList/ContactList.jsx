@@ -4,7 +4,7 @@ import css from './ContactList.module.css';
 import styles from '../ContactItem/ContactItem.module.css';
 import { useSelector } from 'react-redux';
 const ContactList = () => {
-  const contacts = useSelector(({ contacts }) => contacts);
+  const { contacts } = useSelector(({ contacts }) => contacts);
   const filter = useSelector(({ filter }) => filter);
 
   const getVisibleContacts = () => {
@@ -22,12 +22,7 @@ const ContactList = () => {
       {visibleContacts.map(({ id, name, number }) => {
         return (
           <li className={styles.contactItem} key={id}>
-            <ContactItem
-              id={id}
-              name={name}
-              number={number}
-              // onDeleteContact={onDeleteContact}
-            />
+            <ContactItem id={id} name={name} number={number} />
           </li>
         );
       })}
