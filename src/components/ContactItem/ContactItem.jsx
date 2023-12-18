@@ -5,7 +5,7 @@ import { deleteContact } from '../../redux/contactsSlice';
 
 const ContactItem = ({ id, name, number }) => {
   const dispatch = useDispatch();
-  console.log(dispatch(deleteContact(id)));
+
   return (
     <>
       <p className={css.contactName}>
@@ -30,5 +30,4 @@ ContactItem.propTypes = {
   id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   number: PropTypes.string.isRequired,
-  onDeleteContact: PropTypes.func.isRequired,
 };
