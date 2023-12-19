@@ -7,7 +7,6 @@ const ContactList = () => {
   const { contacts } = useSelector(({ items }) => items);
   const filter = useSelector(({ filter }) => filter);
 
-  console.log(contacts);
   const getVisibleContacts = () => {
     const normalizedFilter = filter.toLowerCase();
 
