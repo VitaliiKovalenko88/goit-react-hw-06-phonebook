@@ -11,7 +11,7 @@ const Form = () => {
   const [number, setNumber] = useState('');
 
   const dispatch = useDispatch();
-  const { contacts } = useSelector(({ contacts }) => contacts);
+  const { contacts } = useSelector(({ items }) => items);
 
   const generateId = () => nanoid();
 

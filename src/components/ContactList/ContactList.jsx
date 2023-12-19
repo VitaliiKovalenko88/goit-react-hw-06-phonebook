@@ -4,9 +4,10 @@ import css from './ContactList.module.css';
 import styles from '../ContactItem/ContactItem.module.css';
 import { useSelector } from 'react-redux';
 const ContactList = () => {
-  const { contacts } = useSelector(({ contacts }) => contacts);
+  const { contacts } = useSelector(({ items }) => items);
   const filter = useSelector(({ filter }) => filter);
 
+  console.log(contacts);
   const getVisibleContacts = () => {
     const normalizedFilter = filter.toLowerCase();
 
