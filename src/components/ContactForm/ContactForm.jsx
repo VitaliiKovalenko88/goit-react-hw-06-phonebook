@@ -5,13 +5,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import { nanoid } from 'nanoid';
 import toast, { Toaster } from 'react-hot-toast';
 import { addContact } from '../../redux/contactsSlice';
+import { selectContacts } from '../../redux/selectors';
 
 const Form = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
   const dispatch = useDispatch();
-  const { contacts } = useSelector(({ items }) => items);
+  const { contacts } = useSelector(selectContacts);
 
   const generateId = () => nanoid();
 
